@@ -25,6 +25,8 @@ def quick_sort(array,start,end):
             array[left],array[right]=array[right],array[left]
         print(array)
     #분할 이후 왼쪽 부분과 오른쪽 부분에서 각각 정렬 수행
+
+
     quick_sort(array,start,right-1)
     quick_sort(array,right+1,end)
 
@@ -42,3 +44,8 @@ def python_quickSort(array):
 
     left_side=[x for x in tail if x <= pivot]
     right_side=[x for x in tail if x > pivot]
+
+    #분할 이후 왼쪽 부분과 오른쪽 부분에서 각각 정렬을 수행하고, 전체 리스트를 반환
+    return python_quickSort(left_side) + [pivot]+python_quickSort(right_side)
+
+print("python 장점을 살린 퀵정렬: ",python_quickSort(array))
