@@ -32,7 +32,7 @@ for k in range(1,n+1):
 #수행된 결과를 출력
 distance=graph[1][k] + graph[k][x]
 
-if distance==INF:
+if distance==INF:   
     print("INFINITY",end=' ')
 else:
     print(distance)
