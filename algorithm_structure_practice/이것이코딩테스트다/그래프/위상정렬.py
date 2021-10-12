@@ -39,6 +39,6 @@ def topology_sort():
                 q.append(i)
     #위상 정렬을 수행한 결과 출력
     for i in result:
-        print(i,end=' ')
+        print(i,end=' ') 
 
 topology_sort()
