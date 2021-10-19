@@ -64,7 +64,6 @@ def simulate():
                 q.append((nx,ny))
         #벽이나 뱀의 몸통과 부딪혔다면
         else:
-            
             time +=1
             break
         #다음 위치로 머리 이동
