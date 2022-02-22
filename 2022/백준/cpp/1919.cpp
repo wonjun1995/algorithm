@@ -21,9 +21,10 @@ int main(){
     for(char c:s2){
         arr2[c-'a']++;
     }
+    //차이가 음수가 될 수도 있기 때문에 절대값 설정
     for(int i=0;i<26;i++){
         if(arr1[i]!=arr2[i]){
-            ans+=(arr1[i]+arr2[i]);
+            ans+=abs(arr1[i]-arr2[i]);
         }
     }
     cout << ans;
