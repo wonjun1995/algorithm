@@ -20,6 +20,8 @@ int main(){
         while(!st.empty()){
             if(st.top() <= num){
                 st.pop();
+            }else{
+                break;
             }
         }
         st.push(num);
