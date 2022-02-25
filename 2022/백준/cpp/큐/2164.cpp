@@ -14,9 +14,13 @@ int main(){
     for(int i=1;i<=input;i++){
         Q.push_back(i);
     }
-    while(Q.size()==1){
-        
+    while(!Q.empty()){
+        if(Q.size()==1) break;
+        Q.pop_front();
+        Q.push_back(Q.front());
+        Q.pop_front();
     }
+    cout << Q.front();
 
     return 0;
 }
