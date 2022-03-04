@@ -14,6 +14,7 @@ int main(){
 
     ios::sync_with_stdio(false);
     cin.tie(0);
+
     //테스트 케이스의 개수
     int t;
     cin >> t;
@@ -27,28 +28,95 @@ int main(){
         string x;
         string inputNum="";
         deque<int> dq;
+        bool reverse = false;
+        bool error = false;
         cin >> p >> n >> x;
         //문자열 2개의 숫자인 경우 어떻게 처리를 할 것인가??
-        string t = "78";
         for(auto c : x ){
             if(c == '[' || c == ']' || c == ','){
-                if(c != '['){
-                    dq.push_back(inputNum);
+                if(c!='[' && !inputNum.empty()){
+                    //cout << "inputNum : " << inputNum << " ";
+                    dq.push_back(stoi(inputNum));
+                    inputNum="";
                 }
-                inputNum="";
                 continue;
             }
             inputNum += c;
-            cout << "inputNum:" << inputNum<< '\n';
         }
+        for(auto func : p){
 
-        cout << "test\n";
-        for(int i=0;i<n; i++){
-            cout << dq[i] << ' ';
+            if(func == 'R'){
+                //배열에 있는 수의 순서를 뒤집음.
+                if(reverse){
+                    reverse = false;
+                }else{
+                    reverse = true;
+                }
+            }
+            if(reverse && func == 'D'){
+                if(!dq.empty()){
+                    dq.pop_back();
+                }else{
+                    error=true;
+                    break;
+                }
+            }else if(!reverse && func == 'D'){
+                if(!dq.empty()){
+                    dq.pop_front();
+                }else{
+                    error=true;
+                    break;
+                }
+                
+            }
         }
+        if(error){
+            cout << "error\n";
+            continue;
+        }
+        //순서가 뒤바뀌고 pop된 상태의 dq를 출력
+        cout << '[';
+        if(reverse && !dq.empty()){
+            for(auto ans = dq.rbegin(); ans != dq.rend(); ans++){
+                if(ans == dq.rend()-1){
+                    cout << *ans;    
+                }else{
+                    cout << *ans <<',';
+                }
+            }
+        }
+        //순서가 안바뀌고 pop된 상태의 dq를 출력
+        else if(!reverse && !dq.empty()){
+            for(auto ans = dq.begin(); ans != dq.end(); ans++){
+                if(ans == dq.end()-1){
+                    cout << *ans;    
+                }else{
+                    cout << *ans <<',';
+                }
+            }
+        }
+        cout << "]\n";
 
     }
 
 
     return 0;
 }
+
+/*
+1
+RDD
+4
+[1,2,3,4]
+
+1
+D
+0
+[]
+
+1
+RRD
+6
+[1,1,2,3,5,8]
+
+*/
