@@ -9,18 +9,22 @@ int main(){
 
     ios::sync_with_stdio(false);
     cin.tie(0);
-
+    int ans=0;
     int n;
-    stack<char> st;
-    string input;
     cin >> n;
 
     while(n--){
+        string input;
+        stack<char> st;
         cin >> input;
         for(auto word : input){
-            st.push(word);
+            if(!st.empty() && st.top() == word) st.pop();
+            else st.push(word);
         }
+        if(st.empty()) ans++;
     }
+
+    cout << ans;
 
 
     return 0;
