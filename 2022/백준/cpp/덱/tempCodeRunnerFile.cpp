@@ -1,4 +1,4 @@
-cout << "test\n";
-        for(int i=0;i<n; i++){
-            cout << dq[i] << ' ';
-        }
+1
+RRD
+6
+[1,1,2,3,5,8]
