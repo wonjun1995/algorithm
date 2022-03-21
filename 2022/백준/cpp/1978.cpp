@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+//소수 찾기
 int main() {
 	int N, result = 0;
 	int temp, cnt = 0;
